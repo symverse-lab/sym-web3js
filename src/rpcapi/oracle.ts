@@ -7,11 +7,11 @@ const OracleMethod = (rpc, payload) => {
         //         'citizen_sendRawCitizen', []
         //     ));
         // },
-        sendOracleJSON: (symId, jsonString) => {
-            return rpc(payload(
-                'oracle_sendOracleJSON', [symId, jsonString]
-            ));
-        },
+        // sendOracleJSON: (symId, jsonString) => {
+        //     return rpc(payload(
+        //         'oracle_sendOracleJSON', [symId, jsonString]
+        //     ));
+        // },
         getOracleByHash: (hash) => {
             return rpc(payload(
                 'oracle_getOracleByHash', [hash]

@@ -8,8 +8,8 @@ import numberToBN from 'number-to-bn';
 
 const _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; };
 
-const DEFAULT_BLOCK = 'latest';
-const PADDING_BLOCK = 'padding';
+export const DEFAULT_BLOCK = 'latest';
+export const PENDING_BLOCK = 'pending';
 
 const isHex = (value) => {
     const hexRegEx = /([0-9]|[a-f])/gim;
@@ -280,8 +280,12 @@ const ecsign = (msgHash, privateKey) => {
     return ret;
 };
 
-const toHug = (balance) => {
-    return balance * Math.pow(10, 18);
+const toHug = (sym) => {
+    return sym * Math.pow(10, 18);
+};
+
+const toSym = (hug) => {
+    return hug / Math.pow(10, 18);
 };
 
 const rlphash = (datas) => {
@@ -454,7 +458,7 @@ const bufferToInt = (buf) => {
 
 export default {
     DEFAULT_BLOCK,
-    PADDING_BLOCK,
+    PENDING_BLOCK,
     isHex,
     appendHex,
     c10,
@@ -466,6 +470,7 @@ export default {
     stringToHex,
     numberToHex,
     toHug,
+    toSym,
     toUnit,
     rlphash,
     baToJSON,

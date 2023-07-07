@@ -12,7 +12,7 @@ SctFormat.prototype.raw = function () {
 };
 
 let sct20 = (function () {
-    let type = 20;
+    const type = 20;
 
     return {
         create: function (name, symbol, totalSupply, ownerSymId) {
