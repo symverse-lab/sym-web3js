@@ -1,11 +1,11 @@
 type Network = 'TESTNET' | 'MAINNET';
 
-type GsymNode = {
+export type GsymNode = {
 	url: string,
 	symbase: string,
 };
 
-export const PUBLIC_MAINNET_WORKNODES: GsymNode[] = [
+export const publicMainNetWorkNodes: GsymNode[] = [
 	{ url: "http://58.227.193.177:8545", symbase: "0x000294158de00c6f0002" },
 	{ url: "http://1.234.16.208:8545", symbase: "0x0002537dc9a64d350002" },
 	{ url: "http://58.227.193.176:8545", symbase: "0x000219d9056be8690002" },
@@ -19,7 +19,7 @@ export const PUBLIC_MAINNET_WORKNODES: GsymNode[] = [
 	{ url: "http://58.227.193.172:8545", symbase: "0x00022f5e13d35a4f0002" },
 ];
 
-export const PUBLIC_TESTNET_WORKNODES: GsymNode[] = [
+export const publicTestNetWorkNodes: GsymNode[] = [
 	{ url: "http://110.10.76.180:8545", symbase: "0x00024f48413a322b0002" },
 	{ url: "http://1.234.16.211:8545", symbase: "0x0002241d160e075a0002" },
 	{ url: "http://58.227.193.179:8545", symbase: "0x0002f9f1eae3dcd40002" },
@@ -33,8 +33,8 @@ export const PUBLIC_TESTNET_WORKNODES: GsymNode[] = [
 
 export const fromNetwork = (network: Network): GsymNode => {
 	const nodes = (network === 'TESTNET')
-		? PUBLIC_TESTNET_WORKNODES
-		: PUBLIC_MAINNET_WORKNODES;
+		? publicMainNetWorkNodes
+		: publicTestNetWorkNodes;
 
 	const randomIndex = Math.floor(Math.random() * nodes.length);
 	return nodes[randomIndex];

@@ -2,17 +2,27 @@ import SymNetwork from './network';
 import helper from './utils/helper';
 import signer from './signer';
 import sct from './rpcapi/sct';
+import { fromNetwork, publicMainNetWorkNodes, publicTestNetWorkNodes } from './node/public-node';
 
-const SymJs = function() {
+const SymWeb3 = () => {
 	return {
 		param: sct,
 		signer,
-		utils: helper,
-		network: SymNetwork
-	}
+		utils: {
+			...helper,
+			fromNetwork,
+			publicTestNetWorkNodes,
+			publicMainNetWorkNodes,
+		},
+		network: SymNetwork,
+	};
 };
 
-SymJs.utils = helper;
-SymJs.param = sct;
+SymWeb3.utils = {
+	...helper,
+	fromNetwork,
+	publicTestNetWorkNodes,
+	publicMainNetWorkNodes,
+};
 
-export default SymJs;
+export default SymWeb3;
