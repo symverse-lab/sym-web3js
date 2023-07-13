@@ -1,6 +1,7 @@
+import { ISymRPC, RpcPayload, RpcResult } from './types/types';
+
 var HttpProvider = require('ethjs-provider-http');
 
-import { ISymRPC, Payload } from './rpcapi/symrpc';
 import RpcMethod from './rpcapi/methods';
 import SymRPC from './rpcapi/symrpc';
 
@@ -25,7 +26,7 @@ const Network = (function() {
 	}
 
 	// rpc 기본 통신
-	function rpc(payload: Payload, result?) {
+	function rpc(payload: RpcPayload, result?): Promise<any> {
 		if (!hasEngine()) {
 			throw new Error(notConnectedError);
 		}
@@ -45,14 +46,14 @@ const Network = (function() {
 
 	function setHttpProvider(url) {
 		resetEngineConnect();
-		engine = SymRPC(new HttpProvider(url));
+		const rpc = SymRPC(new HttpProvider(url));
+		engine = rpc
+		return rpc;
 	}
 
 	function hasEngine() {
-		if (Object.keys(engine).length > 0) {
-			return true;
-		}
-		return false;
+		return engine && Object.keys(engine).length > 0;
+
 	}
 
 	function hasConnected() {

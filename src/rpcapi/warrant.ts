@@ -1,6 +1,8 @@
+import { payload } from '../utils/rpc';
+
 const helper = require('../utils/helper');
 
-const WarrantMethod = (rpc, payload) => {
+const WarrantApi = (rpc) => {
     return {
         blockNumber: () => {
             return rpc(payload(
@@ -31,4 +33,4 @@ const WarrantMethod = (rpc, payload) => {
     };
 };
 
-export default WarrantMethod;
+export default WarrantApi;

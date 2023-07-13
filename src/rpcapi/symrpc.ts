@@ -1,30 +1,7 @@
 'use strict';
 
 import promiseToCallback from 'promise-to-callback';
-
-interface Provider {
-    sendAsync: (payload: any, cb: (err: any, response: any) => void) => void;
-}
-
-interface Options {
-    jsonSpace?: number;
-    max?: number;
-}
-
-export interface Payload {
-    id?: number;
-    method?: string;
-    jsonrpc?: string;
-    params?: any[];
-}
-
-export interface ISymRPC {
-    options: Options;
-    idCounter: number;
-    currentProvider: Provider;
-    setProvider: (provider: Provider) => void;
-    sendAsync: (payload: Payload, callback?: (err: any, response: any) => void) => Promise<any>;
-}
+import { ISymRPC, Options, RpcPayload, Provider } from '../types/types';
 
 function SymRPC(cprovider: Provider, options?: Options): ISymRPC {
     const optionsObject: Options = options || {};
@@ -42,7 +19,7 @@ function SymRPC(cprovider: Provider, options?: Options): ISymRPC {
 
             self.currentProvider = provider;
         },
-        sendAsync(payload: Payload, callback?: (err: any, response: any) => void) {
+        sendAsync(payload: RpcPayload, callback?: (err: any, response: any) => void) {
             self.idCounter = self.idCounter % self.options.max;
             const parsedPayload = createPayload(payload, self.idCounter++);
 
@@ -80,9 +57,9 @@ function SymRPC(cprovider: Provider, options?: Options): ISymRPC {
     return self;
 }
 
-function createPayload(data: Payload, id: number): Payload {
+function createPayload(data: RpcPayload, id: number): RpcPayload {
     // 기본 payload 객체 정의
-    let payload: Payload = {
+    let payload: RpcPayload = {
         id: id,
         jsonrpc: '2.0',
         params: []

@@ -1,6 +1,7 @@
 import helper from '../utils/helper'
+import { payload } from '../utils/rpc';
 
-const OracleMethod = (rpc, payload) => {
+const OracleApi = (rpc) => {
     return {
         // sendOracle: (oracleRaw, pk) => {
         //     return rpc(payload(
@@ -54,4 +55,4 @@ const OracleMethod = (rpc, payload) => {
     };
 };
 
-export default OracleMethod;
+export default OracleApi;

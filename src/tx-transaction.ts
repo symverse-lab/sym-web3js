@@ -214,7 +214,9 @@ let Transaction = (function () {
     Transaction.prototype.sign = function sign (privateKey) {
         let msgHash = this.hash(false);
         let sig = helper.ecsign(msgHash, privateKey);
-        Object.assign(this, sig);
+        this.r = Buffer.from(sig.r)
+        this.s = Buffer.from(sig.s)
+        this.v = sig.v
     };
 
     /**
