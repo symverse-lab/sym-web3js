@@ -1,9 +1,8 @@
-import { ISymRPC, RpcPayload, RpcResult } from './types/types';
-
-var HttpProvider = require('ethjs-provider-http');
-
+import { ISymRPC, RpcPayload } from './types/types';
 import RpcMethod from './rpcapi/methods';
 import SymRPC from './rpcapi/symrpc';
+
+var HttpProvider = require('ethjs-provider-http');
 
 const notConnectedError = 'connect() 함수를 통해 rpc 연결을 확인해 주시기 바랍니다.';
 
@@ -47,7 +46,7 @@ const Network = (function() {
 	function setHttpProvider(url) {
 		resetEngineConnect();
 		const rpc = SymRPC(new HttpProvider(url));
-		engine = rpc
+		engine = rpc;
 		return rpc;
 	}
 

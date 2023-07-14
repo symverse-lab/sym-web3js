@@ -22,3 +22,7 @@ rollup.config.js
 rollup.min.config.js
 src
 tests
+coverage
+dist
+.nyc_output
+webpack.config.js

@@ -274,7 +274,6 @@ const ecrecover = (msgHash, v, r, s) => {
 
 const ecsign = (msgHash, privateKey) => {
 	var sig = secp256k1.ecdsaSign(Buffer.from(msgHash, 'hex'), privateKey);
-	console.log(sig, sig.recovery, "???")
 	var recovery = sig.recovery;
 	var ret = {
 		r: sig.signature.slice(0, 32),

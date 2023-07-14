@@ -22,6 +22,9 @@ export interface RpcResult {
 		message: string
 	}
 }
+
+export type RpcRun<I, O> = (input: I) => Promise<O>
+
 export interface RpcMethod{
 	<T = any> (payload: RpcPayload, callback?: any): Promise<T>;
 }

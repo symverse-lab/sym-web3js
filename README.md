@@ -4,12 +4,12 @@
 
 ## Installation
 #### Node.js
-```javascript
+```
 npm i sym-web3js
 ```
 
 #### Yarn
-```javascript
+```
 yarn add sym-web3js
 
 ...
@@ -30,7 +30,7 @@ console.log(SymWeb3)  // { utils: ...}
 const symjs = SymWeb3();
 console.log(symjs); // {network: ..., utils: ..., signer: ...} 
 ````
-Network connect(`symverse rpc`)
+### Network connect
 ```javascript
 const symjs = SymWeb3();
 symjs.network.connect("http://localhost:8001").then(connectedMessage => {
@@ -88,6 +88,34 @@ let constract = await symjs.network.call.sct.getContract("0x4523ad7875a9c41e9629
 let account = await symjs.network.call.sct.getContractAccount("0x4523ad7875a9c41e9629", "0x00021000000000010002")
 ```
 
+### Send Transaction Receipt confirmation
+
+```javascript
+
+//send Transaction
+const hash = await symjs.network.call.sendRawTransaction(symjs.signer.sign(params, pk))
+
+// watch Transaction Receipt
+const receipt = await watch(hash).next(symjs.network.call.getTransactionReceipt);
+
+console.log(receipt)
+/*
+* {
+  blockHash: '0xc8580648b270bf690ca5b151f0d76c1d2b864af7f3ba7003f4ab031b3aa0505c',
+  blockNumber: '0x18eee87',
+  contractAddress: null,
+  cumulativeGasUsed: '0xbf68',
+  from: '0x0002afc5b2b55a270002',
+  gasUsed: '0xbf68',
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: '0x1',
+  to: '0x00020000000000010002',
+  transactionHash: '0x318e722534f9acc60fc45fcca7f54058e0fecb34e175e619033c5982a9ff099a',
+  transactionIndex: '0x0'
+}
+* */
+```
 
 ## Contact
 <https://www.symverse.com/><br> Please contact us on this page.
