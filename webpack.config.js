@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-	entry: './src/index.ts',
+	entry: path.resolve('./src/index.ts'),
 	module: {
 		rules: [
 			{
@@ -16,6 +16,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js'],
 	},
+	devtool: 'cheap-module-source-map',
 	output: {
 		library: 'SymWeb3',
 		libraryTarget: 'umd',

@@ -1,7 +1,7 @@
 'use strict';
 
 import promiseToCallback from 'promise-to-callback';
-import { ISymRPC, Options, RpcPayload, Provider } from '../types/types';
+import { ISymRPC, Options, RpcPayload, Provider } from '../types';
 
 function SymRPC(cprovider: Provider, options?: Options): ISymRPC {
     const optionsObject: Options = options || {};

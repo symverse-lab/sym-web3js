@@ -1,11 +1,13 @@
 {
   "name": "sym-web3js",
   "description": "symverse blockchain web3js library",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.8",
   "main": "dist/sym-web3.js",
+  "types": "dist/index.d.ts",
   "author": "bluecheat <itsinil@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build:dev": "webpack --mode=development",
     "build": "webpack --mode=production",
     "test": "yarn mocha tests/**/*.ts -r ts-node/register",
     "coverage": "nyc --reporter=html yarn run test",
@@ -13,10 +15,10 @@
   },
   "dependencies": {
     "assert": "^2.0.0",
+    "axios": "^1.4.0",
     "bignumber.js": "^9.1.1",
     "bn.js": "^5.2.1",
     "cross-fetch": "^3.1.5",
-    "ethjs-provider-http": "^0.1.6",
     "number-to-bn": "^1.7.0",
     "promise-to-callback": "^1.0.0",
     "rlp": "^3.0.0",

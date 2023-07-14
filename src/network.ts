@@ -1,8 +1,7 @@
-import { ISymRPC, RpcPayload } from './types/types';
+import { ISymRPC, RpcPayload } from './types';
 import RpcMethod from './rpcapi/methods';
 import SymRPC from './rpcapi/symrpc';
-
-var HttpProvider = require('ethjs-provider-http');
+import HttpProvider from './rpcapi/provider/http';
 
 const notConnectedError = 'connect() 함수를 통해 rpc 연결을 확인해 주시기 바랍니다.';
 
