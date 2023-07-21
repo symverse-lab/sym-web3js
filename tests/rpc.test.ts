@@ -34,6 +34,12 @@ describe("Symverse RPC API Call", function () {
         assert.isOk(SymJs.utils.toSym(result))
     });
 
+    it('getDeposit', async () => {
+        let result = await symjs.network.call.getDeposit(testSymId)
+        console.log(result)
+        assert.isOk(result)
+    });
+
     it('accounts', async () => {
         let result = await symjs.network.call.accounts()
         console.log(result[0])

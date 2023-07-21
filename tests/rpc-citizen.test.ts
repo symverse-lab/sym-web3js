@@ -11,7 +11,7 @@ describe("Test Citizen RPC API By Testnet", function () {
     symjs.network.connect(testnet.url)
 
     it('getCitizenBySymID', async () => {
-        let result = await symjs.network.call.citizen.getCitizenBySymID(testSymId)
+        let result = await symjs.network.call.citizen.getCitizenBySymID('0x00024f48413a322b0002')
         console.log(result)
         assert.isOk(result)
     });

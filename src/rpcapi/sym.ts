@@ -60,8 +60,8 @@ const SymApi = (rpc: RpcMethod) => {
 		getTransactionReceipt: (hash: string) =>
 			rpc<TransactionReceipt>(payload('sym_getTransactionReceipt', [hash])),
 
-		getDeposit: (address: string) =>
-			rpc(payload('sym_getDeposit', [address])),
+		getDeposit: (address: string, blockNumber: string = helper.DEFAULT_BLOCK) =>
+			rpc(payload('sym_getDeposit', [address, blockNumber])),
 
 		sendTransaction: (txParams: TxParams, pk: string) =>
 			rpc<string>(payload('sym_sendRawTransaction', [tx.sign(txParams, pk)])),
