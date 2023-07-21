@@ -2,8 +2,8 @@ import SymJs from '../src';
 import { expect, assert }  from 'chai';
 import { fromNetwork } from '../src/node/public-node';
 import { DEFAULT_BLOCK, PENDING_BLOCK } from '../src/utils/helper';
+import { testnet } from './index.test';
 
-const testnet = fromNetwork('TESTNET')
 const testSymId = "0x00024f48413a322b0002"
 
 describe("Symverse RPC API Call", function () {

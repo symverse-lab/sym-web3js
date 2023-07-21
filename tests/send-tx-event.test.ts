@@ -1,10 +1,8 @@
 import SymJs from '../src';
-import { fromNetwork } from '../src/node/public-node';
 import { watch } from '../src/event/event';
 import { TransactionReceipt } from '../src/types';
 import { assert } from 'chai';
-
-const testnet = fromNetwork('TESTNET');
+import { testnet } from './index.test';
 
 describe('Rpc Watch Event Test Cases', function() {
 	this.timeout(12000);
@@ -28,13 +26,13 @@ describe('Rpc Watch Event Test Cases', function() {
 		};
 
 		// send Transaction
-		const result = await symjs.network.call.sendRawTransaction(symjs.signer.sign(params, pk))
+		const result = await symjs.network.call.sendRawTransaction(symjs.signer.sign(params, pk));
 		// watch TransactionReceipt
 		const receipt = await watch<string, TransactionReceipt>(result)
 			.next((input) => symjs.network.call.getTransactionReceipt(input));
 		console.log(receipt);
-		assert.isOk(result)
-		assert.isOk(receipt)
-		assert.equal(result, receipt.transactionHash)
+		assert.isOk(result);
+		assert.isOk(receipt);
+		assert.equal(result, receipt.transactionHash);
 	});
 });

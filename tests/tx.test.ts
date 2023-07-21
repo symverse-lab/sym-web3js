@@ -1,8 +1,7 @@
 import SymJs from '../src';
 import { fromNetwork } from '../src/node/public-node';
 import { PENDING_BLOCK } from '../src/utils/helper';
-
-const testnet =  fromNetwork('TESTNET')
+import { testnet } from './index.test';
 
 describe('Send Transaction Test Cases', function() {
 	const symjs = SymJs();
