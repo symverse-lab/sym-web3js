@@ -11,7 +11,7 @@
     "build": "webpack --mode=production",
     "test": "yarn mocha tests/**/*.ts -r ts-node/register",
     "coverage": "nyc --reporter=html yarn run test",
-    "coverage:codecov": "nyc mocha tests/**/*.ts -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=coverage/coverage.xml",
+    "coverage:codecov": " nyc --reporter=lcov mocha tests/**/*.ts -r ts-node/register ./node_modules/.bin/codecov",
     "predeploy": "npm run build"
   },
   "dependencies": {
