@@ -11,7 +11,7 @@
     "build": "webpack --mode=production",
     "test": "yarn mocha tests/**/*.ts -r ts-node/register",
     "coverage": "nyc --reporter=html yarn run test",
-    "coverage:xml": "nyc mocha tests/**/*.ts -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=coverage/coverage.xml",
+    "coverage:codecov": "nyc mocha tests/**/*.ts -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=coverage/coverage.xml",
     "predeploy": "npm run build"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.4.0",
     "chai": "^4.3.7",
+    "codecov": "^3.8.3",
     "esm": "^3.2.25",
     "html-webpack-plugin": "^5.5.3",
     "mocha": "^10.2.0",
